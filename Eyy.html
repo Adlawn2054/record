@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Play Song</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+</style>
+<body>
+
+<audio id="audio" autoplay muted>
+    <source src="Eyyy.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<button class="click" id="unmuteBtn">Click to Play</button>
+
+<script>
+    const audio = document.getElementById('audio');
+    const unmuteBtn = document.getElementById('unmuteBtn');
+
+    // Try to play the audio when the page loads
+    window.addEventListener('load', () => {
+        audio.play().catch((error) => {
+            console.log("Playback prevented: ", error);
+        });
+    });
+
+    // Unmute when the button is clicked
+    unmuteBtn.addEventListener('click', () => {
+        audio.muted = false;
+        audio.play();
+        unmuteBtn.style.display = 'none'; // Hide button after clicking
+    });
+</script>
+
+</body>
+</html>
